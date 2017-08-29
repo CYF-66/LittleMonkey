@@ -53,6 +53,8 @@ export default class LoginPage extends Component {
             // }
 
             if (!loginReducer.isLoading) {
+
+                // 哈哈哈哈或或哈哈哈哈或
                 Toast.show("登录222成功", {position: Toast.positions.CENTER});
             }
         });
