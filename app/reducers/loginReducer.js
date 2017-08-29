@@ -11,6 +11,7 @@ const initialState = {
     isLoading: true,
     isLoadMore: false,
     isRefreshing: false,
+    Code:'',
 };
 
 let loginReducer = (state = initialState, action) => {
@@ -37,6 +38,7 @@ let loginReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 Data: action.Data,
+                Code: action.Code,
             };
         default:
             return state;

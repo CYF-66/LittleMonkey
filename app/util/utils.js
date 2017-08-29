@@ -86,17 +86,17 @@ let Util = {
         // ws.CONNECTING=() =>{
         //     ws.OPEN(5000);
         // };
-        Toast.show("onconnectbegin", {position:Toast.positions.CENTER});
+        // Toast.show("onconnectbegin", {position:Toast.positions.CENTER});
         ws.onopen = () => {
             // 打开一个连接
-            alert('onopen');
+            // alert('onopen');
             ws.send('something'); // 发送一个消息
         };
 
         ws.onmessage = (e) => {
             // 接收到了一个消息
             console.log(e.data);
-            Toast.show("onmessage="+e.data, {position:Toast.positions.CENTER});
+            // Toast.show("onmessage="+e.data, {position:Toast.positions.CENTER});
             // alert('onmessage='+e.data);
             successCallback(e.data);
         };
@@ -105,16 +105,16 @@ let Util = {
             // 发生了一个错误
             console.log(e.message);
             // alert('onerror='+e.message);
-            Toast.show("onerror="+e.message, {position:Toast.positions.CENTER});
+            // Toast.show("onerror="+e.message, {position:Toast.positions.CENTER});
         };
 
         ws.onclose = (e) => {
             // 连接被关闭了
-            alert('onclose'+e.reason);
-            Toast.show("onclose="+e.reason, {position:Toast.positions.CENTER});
+            // alert('onclose'+e.reason);
+            // Toast.show("onclose="+e.reason, {position:Toast.positions.CENTER});
             console.log(e.code, e.reason);
         };
-        Toast.show("onconnectend", {position:Toast.positions.CENTER});
+        // Toast.show("onconnectend", {position:Toast.positions.CENTER});
         // alert('onconnectend');
     }
 };

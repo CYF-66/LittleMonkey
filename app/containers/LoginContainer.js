@@ -18,5 +18,5 @@ class LoginContainer extends Component {
 }
 
 export default connect((state) => {
-    return {loginReducer,homeReducer} = state;
+    return {loginReducer} = state;
 })(LoginContainer);

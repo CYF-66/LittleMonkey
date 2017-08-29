@@ -14,12 +14,6 @@ import {
 } from 'react-native';
 
 import Common from '../util/constants';
-const positions = {
-    TOP: 20,
-    BOTTOM: -20,
-    CENTER: 0
-};
-
 export default class Loading extends React.Component {
     render() {
         return (

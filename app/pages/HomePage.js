@@ -8,6 +8,7 @@ import ScrollableTabView, {
 import NavigationBar from 'react-native-navigationbar'
 import {GetOneKeyRegister,HttpLogin,GetProductList,OpenSocketConnection} from '../actions/homeActions';
 import Loading from '../components/Loading';
+import Toast from 'react-native-root-toast';
 // import io from 'socket.io-client';
 // import AboutPage from './AboutPage'
 
@@ -170,7 +171,7 @@ export default class HomePage extends Component {
     }
 
     _skipIntoContent(contentData) {
-        alert(contentData.CName)
+        Toast.show(contentData.CName, {position: Toast.positions.CENTER});
         // this.props.navigator.push({// 活动跳转，以Navigator为容器管理活动页面
         //     component: DailyContent,
         //     // passProps: {contentData}// 传递的参数（可选）,{}里都是键值对  ps: test是关键字

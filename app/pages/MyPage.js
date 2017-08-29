@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 //引入标题支持包
 import NavigationBar from 'react-native-navigationbar'
+import Toast from 'react-native-root-toast';
 // import SetPage from 'SetPage'
 import SetContainer from '../containers/SetContainer'
 
@@ -174,7 +175,7 @@ export default class MyPage extends Component {
     }
 
     _skipIntoContent(contentData) {
-        alert(contentData)
+        Toast.show(contentData, {position: Toast.positions.CENTER});
     }
 
     _skipIntoAccountManage() {
