@@ -197,7 +197,7 @@ export default class LoginPage extends Component {
         const {switchType, account, accountPWD} = this.state;
         // Toast.show("登录成功kkkkkk", {position: Toast.positions.CENTER});
         // Toast.show("登录成功account==-----======"+account, {position: Toast.positions.CENTER});
-        Toast.show("登录成功code==-----======"+code, {position: Toast.positions.CENTER});
+        Toast.show("登录成功code="+code, {position: Toast.positions.CENTER});
         if(code=='0'){
             Storage.save('accountPWD', accountPWD);
             Storage.save('account', account);
