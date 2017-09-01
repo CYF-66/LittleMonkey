@@ -5,7 +5,7 @@ import {
     ListView,
     RefreshControl,
     Image,
-    TouchableHighlight,
+    TouchableOpacity,
     Text,
     StyleSheet,
     InteractionManager
@@ -52,8 +52,7 @@ export default class SetPage extends Component {
                     // }}
                 />
                 <View style={styles.funcfirst}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoLogin()}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/app_login.png')} style={{
@@ -66,11 +65,10 @@ export default class SetPage extends Component {
                             <Text style={styles.drawertext}>登录</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("注册")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/app_registered.png')} style={{
@@ -83,11 +81,10 @@ export default class SetPage extends Component {
                             <Text style={styles.drawertext}>注册</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("修改密码")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/re_password.png')} style={{
@@ -100,11 +97,10 @@ export default class SetPage extends Component {
                             <Text style={styles.drawertext}>修改密码</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("新建模拟账户")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/re_password.png')} style={{
@@ -117,13 +113,12 @@ export default class SetPage extends Component {
                             <Text style={styles.drawertext}>新建模拟账户</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
-                <TouchableHighlight style={styles.buttonStyle}
-                                    underlayColor={'#333333'}
+                <TouchableOpacity style={styles.buttonStyle}
                                     onPress={() => this._skipIntoContent("退出登录")}>
                     <Text style={styles.backlogin}>退出登录</Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
             </View>
         )
     }

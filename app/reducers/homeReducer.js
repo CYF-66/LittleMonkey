@@ -57,6 +57,7 @@ let homeReducer = (state = initialState, action) => {
                 isLoading: true
             };
         case types.GETPRODUCTLISTRECEIVED:
+            // alert('homereducer===');
             return {
                 ...state,
                 isLoading: false,
@@ -77,7 +78,18 @@ let homeReducer = (state = initialState, action) => {
 
                 // DataList: action.DataList.length> 0 ? state.DataList.concat(action.DataList) : state.DataList
             };
-
+        case types.ACTIONERROR:
+            // return {
+            //     ...state,
+            //     //articles: action.articles,
+            //     articles: action.articles.length > 0 ? state.articles.concat(action.articles) : state.articles,
+            //     isLoading: false,
+            //     isRefreshing: false,
+            // };
+            return {
+                ...state,
+                isLoading: false,
+            };
         default:
             return state;
     }

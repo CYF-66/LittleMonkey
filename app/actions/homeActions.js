@@ -29,7 +29,7 @@ export let GetOneKeyRegister = (isLoading) => {
             },
             (error) => {
                 // console.log('Fetch banner list error: ' + error);
-                dispatch({'type': types.GETNOTREALACCOUNT,'isLoading': false});
+                dispatch({'type': types.ACTIONERROR,'isLoading': false});
                 alert('Android要用外网地址');
             }
         );
@@ -56,7 +56,7 @@ export let HttpLogin = (data,isLoading) => {
             },
             (error) => {
                 // console.log('Fetch banner list error: ' + error);
-                dispatch({'type': types.GETNOTREALACCOUNT,'isLoading': false});
+                dispatch({'type': types.ACTIONERROR,'isLoading': false});
                 alert('Android要用外网地址');
             }
         );
@@ -86,7 +86,7 @@ export let GetProductList = (data,isLoading) => {
             },
             (error) => {
                 // console.log('Fetch banner list error: ' + error);
-                dispatch({'type': types.GETNOTREALACCOUNT,'isLoading': false});
+                dispatch({'type': types.ACTIONERROR,'isLoading': false});
                 alert('Android要用外网地址');
             }
         );
@@ -95,7 +95,7 @@ export let GetProductList = (data,isLoading) => {
 };
 export let OpenSocketConnection = () => {
 
-    let url = 'ws://114.55.68.211:9888';
+    let url = 'http://114.55.68.211:9888';
 
     return dispatch => {
         dispatch({type: types.GETPMARKETLIST});
@@ -113,7 +113,7 @@ export let OpenSocketConnection = () => {
             },
             (error) => {
                 // console.log('Fetch banner list error: ' + error);
-                dispatch({'type': types.GETPMARKETLISTRECEIVED,'isLoading': false});
+                dispatch({'type': types.ACTIONERROR,'isLoading': false});
                 alert('Android要用外网地址');
             }
         );
@@ -144,7 +144,7 @@ export let bannerList = () => {
             },
             (error) => {
                 // console.log('Fetch banner list error: ' + error);
-                dispatch({'type': types.kActionError});
+                dispatch({'type': types.ACTIONERROR});
                 alert('Android要用外网地址');
             }
         );
@@ -177,7 +177,7 @@ export let homeListArticles = (page, isLoadMore, isRefreshing, isLoading) => {
                 });
             },
             (error) => {
-                dispatch({'type': types.kActionError, 'isLoading': false});
+                dispatch({'type': types.ACTIONERROR, 'isLoading': false});
             }
         );
 

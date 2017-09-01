@@ -5,13 +5,14 @@
  */
 
 import * as types from '../actions/actionTypes';
+import Toast from 'react-native-root-toast';
 const initialState = {
     Data:'',
-    DataList:[],
     isLoading: true,
     isLoadMore: false,
     isRefreshing: false,
     Code:'',
+    isLogin: false,
 };
 
 let loginReducer = (state = initialState, action) => {
@@ -19,7 +20,8 @@ let loginReducer = (state = initialState, action) => {
         case types.LOGINURL:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                isLogin: false,
             };
             // return Object.assign({}, state, {
             //     isLoadMore: action.isLoadMore,
@@ -37,8 +39,22 @@ let loginReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
+                isLogin:true,
                 Data: action.Data,
                 Code: action.Code,
+            };
+        case types.ACTIONERROR:
+            // return {
+            //     ...state,
+            //     //articles: action.articles,
+            //     articles: action.articles.length > 0 ? state.articles.concat(action.articles) : state.articles,
+            //     isLoading: false,
+            //     isRefreshing: false,
+            // };
+            return {
+                ...state,
+                isLoading: false,
+                isLogin:false,
             };
         default:
             return state;

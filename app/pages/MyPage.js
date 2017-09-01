@@ -5,7 +5,7 @@ import {
     ListView,
     RefreshControl,
     Image,
-    TouchableHighlight,
+    TouchableOpacity,
     Text,
     StyleSheet,
     InteractionManager
@@ -58,19 +58,17 @@ export default class MyPage extends Component {
                             justifyContent: 'center',
                             marginLeft: 20
                         }}/>
-                        <TouchableHighlight
-                            underlayColor={'white'}
+                        <TouchableOpacity
                             onPress={() => this._skipIntoContent("账户")}>
                         <View>
                             <Text style={styles.drawerheadtext}>交易账户:11010489</Text>
                             <Text style={styles.drawerheadtext}>账户余额:10000.00</Text>
                         </View>
-                        </TouchableHighlight>
+                        </TouchableOpacity>
                     </View>
 
                 <View style={{marginTop: 30, backgroundColor: 'white', paddingBottom: 5, paddingTop: 5}}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoAccountManage("账户管理")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
 
@@ -85,11 +83,10 @@ export default class MyPage extends Component {
 
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("界面")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/iconfont_dingwei.png')} style={{
@@ -102,11 +99,10 @@ export default class MyPage extends Component {
                             <Text style={styles.drawertext}>界面</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("图表")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/iconfont_youhui.png')} style={{
@@ -118,11 +114,10 @@ export default class MyPage extends Component {
                             }}/>
                             <Text style={styles.drawertext}>图表</Text>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("日志")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/iconfont_jine.png')} style={{
@@ -134,11 +129,10 @@ export default class MyPage extends Component {
                             }}/>
                             <Text style={styles.drawertext}>日志</Text>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("消息")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/iconfont_tixing.png')} style={{
@@ -151,11 +145,10 @@ export default class MyPage extends Component {
                             <Text style={styles.drawertext}>消息</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.func}>
-                    <TouchableHighlight
-                        underlayColor={'gray'}
+                    <TouchableOpacity
                         onPress={() => this._skipIntoContent("关于")}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Image source={require('../images/set/iconfont_wenti.png')} style={{
@@ -168,7 +161,7 @@ export default class MyPage extends Component {
                             <Text style={styles.drawertext}>关于</Text>
                         </View>
 
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
         )

@@ -4,7 +4,7 @@ import {
     View,
     TextInput,
     Image,
-    TouchableHighlight,
+    TouchableOpacity,
     Text,
     StyleSheet,
     Switch,
@@ -30,11 +30,44 @@ export default class LoginPage extends Component {
             account: '',
             accountPWD: '',
             isLoading: false,
+            // isLogin:false,
             date: '',
             code:'',
         };
     }
+    // componentWillReceiveProps(nextProps,nextState){
+    //     const {loginReducer} = this.props;
+    //     Toast.show("loginReducer.isLogin===="+loginReducer.isLogin, {position: Toast.positions.CENTER});
+    //     if(loginReducer.isLogin){
+    //         this._loginSuccess();
+    //
+    //         // Toast.show("data===="+data, {position: Toast.positions.CENTER});
+    //     }
+    // }
 
+    // shouldComponentUpdate(){
+    //     const {loginReducer} = this.props;
+    //     Toast.show("loginReducer.isLogin===="+loginReducer.isLogin, {position: Toast.positions.CENTER});
+    //     if(loginReducer.isLogin){
+    //
+    //         this._loginSuccess();
+    //         return false;
+    //
+    //     }
+    //     return true;
+    // }
+    // componentWillUpdate(){
+    //
+    //     // InteractionManager.runAfterInteractions(() => {
+    //     //     const {loginReducer} = this.props;
+    //     //
+    //     //     if(loginReducer.isLogin){
+    //     //         this._loginSuccess();
+    //     //
+    //     //         // Toast.show("data===="+data, {position: Toast.positions.CENTER});
+    //     //     }
+    //     // });
+    // }
     // 这个函数调用时机是在组件创建，并初始化了状态之后，在第一次绘制 render() 之前。可以在这里做一些业务初始化操作，也可以设置组件状态。这个函数在整个生命周期中只被调用一次。
     componentWillMount() {
 
@@ -79,8 +112,24 @@ export default class LoginPage extends Component {
     }
 
     render() {
-        const {homeReducer} = this.props;
-        this.state.date = homeReducer.Data;
+        const {loginReducer} = this.props;
+        this.state.date = loginReducer.Data;
+        // Toast.show("loginReducer.isLogin===="+loginReducer.isLogin, {position: Toast.positions.CENTER});
+        // let isLoading = loginReducer.isLoading;
+        // this.setState({
+        //     isLoading: isLoading
+        // });
+        // let content;
+        // content = (
+        //     <View style={styles.container}>
+        //         {!loginReducer.isLogin ?
+        //             null :
+        //             <View style={{flex: 1, flexDirection: 'column'}}>
+        //                 {this._loginSuccess()}
+        //             </View>
+        //         }
+        //     </View>
+        // )
         return (
             <View style={styles.container}>
                 {/*<Header*/}
@@ -137,6 +186,7 @@ export default class LoginPage extends Component {
                         keyboardType={'default'}
                         secureTextEntry={true}
                         placeholder='密码'
+                        underlineColorAndroid={'transparent'}
                         onChangeText={this.onChangePassword.bind(this)}/>
                 </View>
                 <View style={styles.switch}>
@@ -146,19 +196,20 @@ export default class LoginPage extends Component {
                                 this._changeSate(value)
                             }}/>
                 </View>
-                <TouchableHighlight style={styles.loginBtn} underlayColor={'#FF0000'} onPress={this._login.bind(this)}>
+                <TouchableOpacity style={styles.loginBtn} onPress={this._login.bind(this)}>
                     <Text style={styles.loginText}>登录</Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
+                {/*{content}*/}
                 <View style={styles.registerWrap}>
-                    <TouchableHighlight underlayColor={'#F0F0F0'} onPress={this._forgetPassword.bind(this)}>
+                    <TouchableOpacity onPress={this._forgetPassword.bind(this)}>
                         <Text style={{color: '#62a2e0', fontSize: 18}}>忘记密码</Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                     <Text style={{color: '#62a2e0', marginLeft: 15, marginRight: 15, fontSize: 18}}>
                         |
                     </Text>
-                    <TouchableHighlight underlayColor={'#F0F0F0'} onPress={this._register.bind(this)}>
+                    <TouchableOpacity onPress={this._register.bind(this)}>
                         <Text style={{color: '#62a2e0', fontSize: 18}}>立即注册</Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -186,27 +237,36 @@ export default class LoginPage extends Component {
             // let data={'accountNo':'11010497','loginPwd':'cks69t','eqInfo':'860549030412279;23;1.0;android'};
             dispatch(HttpLogin(data, this.state.isLoading));
         });
-
         const {loginReducer} = this.props;
-        let data = loginReducer.Data;
-        let code = loginReducer.Code;
-        this._loginSuccess(code,data);
+        if(loginReducer.isLogin){
+            this._loginSuccess();
+        }
     }
 
-    _loginSuccess(code,data) {
-        const {switchType, account, accountPWD} = this.state;
-        // Toast.show("登录成功kkkkkk", {position: Toast.positions.CENTER});
-        // Toast.show("登录成功account==-----======"+account, {position: Toast.positions.CENTER});
-        Toast.show("登录成功code="+code, {position: Toast.positions.CENTER});
-        if(code=='0'){
+    _loginSuccess() {
+        const {account, accountPWD} = this.state;
+        const {loginReducer} = this.props;
+        let data = loginReducer.Data;
+        // Toast.show("data.Balance===="+data.Balance, {position: Toast.positions.CENTER});
+        let code = loginReducer.Code;
+        if(typeof(data)=='undefined'||data==null){
+            return;
+        }
+        // Toast.show("data===="+data, {position: Toast.positions.CENTER});
+        console.log("data===="+data.Balance);
+        console.log("code===="+code);
+        // if(code=='0'){
+            Toast.show("_loginSuccess--data.Balance="+data.Balance, {position: Toast.positions.CENTER});
+            var balance=data.Balance;
             Storage.save('accountPWD', accountPWD);
             Storage.save('account', account);
+            Storage.save('Balance', balance);
             this.props.navigator.push({// 活动跳转，以Navigator为容器管理活动页面
                 name:'AppMain',
                 component: AppMain,
                 // passProps: {contentData}// 传递的参数（可选）,{}里都是键值对  ps: test是关键字
             })// push一个route对象到navigator中
-        }
+        // }
     }
 
     _forgetPassword() {

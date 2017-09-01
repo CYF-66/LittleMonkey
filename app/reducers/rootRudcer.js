@@ -10,6 +10,8 @@
 import { combineReducers } from 'redux';
 import homeReducer from './homeReducer';
 import loginReducer from './loginReducer';
+import historyReducer from './historyReducer';
+import tradeReducer from './tradeReducer';
 // import categoryReducer from './categoryReducer';
 // import productReducer from './productReducer';
 // import articleReducer from './articleReducer';
@@ -24,6 +26,8 @@ import loginReducer from './loginReducer';
 export default rootReducer = combineReducers({
     homeReducer,
     loginReducer,
+    historyReducer,
+    tradeReducer,
     // categoryReducer,
     // productReducer,
     // articleReducer,

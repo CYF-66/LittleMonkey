@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react'
-import {View, ListView,RefreshControl, Image, TouchableHighlight, Text, StyleSheet,InteractionManager} from 'react-native'
+import {View, ListView,RefreshControl, Image, TouchableOpacity, Text, StyleSheet,InteractionManager} from 'react-native'
 import ScrollableTabView, {
     DefaultTabBar
 } from 'react-native-scrollable-tab-view';
@@ -46,7 +46,19 @@ export default class HomePage extends Component {
             let data={'cusRoleId':'3'};
             dispatch(GetProductList(data,this.state.isLoading));
             dispatch(OpenSocketConnection());
-            // dispatch(homeListArticles(page, canLoadMore, isRefreshing, isLoading));
+            // if (!window.location) {
+            //     // App is running in simulator
+            //     window.navigator.userAgent = 'ReactNative';
+            // }
+            // const io = require('socket.io-client');
+            // const socket = io('http://114.55.68.211:9888', {
+            //     transports: ['websocket'] // you need to explicitly tell it to use websockets
+            // });
+            // socket.emit('dispatch', "Real time baby 🎉");
+            // socket.on('connect', () => {
+            //     console.log('connected!');
+            //     alert('socket.on=');
+            // });
         });
 
         // const {homeReducer} = this.props;
@@ -100,9 +112,6 @@ export default class HomePage extends Component {
                 }
             </View>
         )
-        // let content={
-        //
-        // }
         return (
             <View style={styles.container} needsOffscreenAlphaCompositing renderToHardwareTextureAndroid>
                 <NavigationBar
@@ -159,14 +168,14 @@ export default class HomePage extends Component {
     _renderItem(contentData){
         // alert("_renderItem="+contentData.length);
         return (
-            <TouchableHighlight  underlayColor={'red'} onPress={() => this._skipIntoContent(contentData)
+            <TouchableOpacity onPress={() => this._skipIntoContent(contentData)
             }>
                 <View style={styles.itemContainer}>
                     <Text style={styles.itemName}>{contentData.CName}</Text>
                     <Text style={styles.itemAsk}>{contentData.Ask}</Text>
                     <Text style={styles.itemBid}>{contentData.Bid}</Text>
                 </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
         )
     }
 
